@@ -1,0 +1,20 @@
+h1 {
+    text-align: center;
+}
+
+#btnCalcular {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #0562ed;
+    font-size: 15px;
+    background: #ffffff;
+    padding: 10px 20px 10px 20px;
+    border: solid #0562ed 2px;
+    text-decoration: none;
+}
+
+#btnCalcular:focus {
+    outline: 0;
+}

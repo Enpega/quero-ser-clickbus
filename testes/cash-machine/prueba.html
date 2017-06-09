@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Enrique Perez">
+        <title>Prueba ClickBus</title>
+        <link rel="stylesheet" type="text/css" href="prueba.css">
+        <script type="application/javascript">
+            function retirar(cantidadSolicitada)
+            {
+                if (!cantidadSolicitada || isNaN(cantidadSolicitada))
+                {
+                    document.getElementById("Resultado").innerHTML = "Cantidad solicitada invalida";
+                    return;
+                }
+                var entregado = [];
+                var billetes = [100, 50, 20, 10];
+
+                try
+                {
+
+                    if (cantidadSolicitada <= 0)
+                    {
+                        throw "InvalidArgumentException";
+                    }
+                    else
+                    {
+                        if (cantidadSolicitada % 10 > 0)
+                        {
+                            throw "NoteUnavailableException";
+                        }
+                        else
+                        {
+                            while (cantidadSolicitada > 0)
+                            {
+                                for (var x = 0; x < billetes.length; x++)
+                                {
+                                    if (cantidadSolicitada >= billetes[x])
+                                    {
+                                        cantidadSolicitada -= billetes[x];
+                                        entregado.push(billetes[x]);
+                                        x = billetes.length;
+                                    }
+                                }
+                                document.getElementById("Resultado").innerHTML = entregado;
+                            }
+                        }
+                    }
+                } //try
+                catch (e) {
+                    document.getElementById("Resultado").innerHTML = e;
+                } //catch
+
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Cash Machine</h1>
+        <p>
+            Escriba la cantidad de dinero que desea retirar:
+            <input type="text" id="txtCantidad">
+        </p>
+        <input type="button" id="btnCalcular" value="Calcular" onclick="javascript:retirar(document.getElementById('txtCantidad').value)">
+        <br><br><br><br>
+        <div id="Resultado"></div>
+    </body>
+</html>
